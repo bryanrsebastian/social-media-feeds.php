@@ -34,12 +34,12 @@ $twitter = array(
 $social_media_feeds = social_media_feeds( $facebook, $twitter );
 ```
 
-But if you want facebook only
+But if you want to show only the feeds in your facebook
 ```sh
 $social_media_feeds = social_media_feeds( $facebook );
 ```
 
-Or twitter only
+Or twitter
 ```sh
 $social_media_feeds = social_media_feeds( array(), $twitter );
 ```
@@ -66,6 +66,6 @@ Requests must be made against the develop branch. Pull requests submitted agains
 All pull requests are subject to approval by the repository owners, who have sole discretion over acceptance or denial.
 
 ### License
-social-media-feeds is under MIT license - http://www.opensource.org/licenses/mit-license.php
+social-media-feeds.php is under MIT license - http://www.opensource.org/licenses/mit-license.php
 
 > If you find this module useful please don't forget to follow me and star this repository. Thank You!
