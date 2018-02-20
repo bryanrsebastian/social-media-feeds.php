@@ -45,7 +45,7 @@ $social_media_feeds = social_media_feeds( array(), $twitter );
 ```
 
 The default timezone of this module is "Asia/Manila",
-to change that timezone you just need to supply the 3rh argument
+to change that timezone you just need to supply the 3rd argument
 
 List of timezone : http://php.net/manual/en/timezones.php
 ```sh
