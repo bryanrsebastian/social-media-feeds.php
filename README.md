@@ -34,7 +34,7 @@ $twitter = array(
 $social_media_feeds = social_media_feeds( $facebook, $twitter );
 ```
 
-But if your want facebook only
+But if you want facebook only
 ```sh
 $social_media_feeds = social_media_feeds( $facebook );
 ```
