@@ -54,10 +54,10 @@ function social_media_feeds( $facebook = array(), $twitter = array(), $timezone 
 				
 				$fb_array_feeds = array(
 					'social_media' => 'facebook',
-					'page_id'      => 'https: //facebook.com/'.PAGE_ID,
+					'page_id'      => 'https://facebook.com/'.PAGE_ID,
 					'page_name'    => $posts_name['name'],
 					'page_dp'      => $posts_img['data']['url'],
-					'post_id'      => 'http : //www.facebook.com/'.$fb_post->id,
+					'post_id'      => 'http://www.facebook.com/'.$fb_post->id,
 					'post_publish' => 'Posted '. human_time_diff( strtotime( get_the_formatted_time( $fb_post->created_time, $timezone ) ), current_time('timestamp') ) . ' ago',
 					'post_message' => $fb_post_msg,
 					'post_image'   => $fb_post_image,
@@ -117,10 +117,10 @@ function social_media_feeds( $facebook = array(), $twitter = array(), $timezone 
 			
 				$twit_array_feeds = array(
 					'social_media' => 'twitter',
-					'page_id'      => 'https: //twitter.com/'.$res->user->screen_name,
+					'page_id'      => 'https://twitter.com/'.$res->user->screen_name,
 					'page_name'    => $res->user->name,
 					'page_dp'      => $res->user->profile_image_url_https,
-					'post_id'      => 'https: //twitter.com/'.$res->user->screen_name.'/status/'.$res->id_str,
+					'post_id'      => 'https://twitter.com/'.$res->user->screen_name.'/status/'.$res->id_str,
 					'post_publish' => 'Posted '. human_time_diff( strtotime( get_the_formatted_time( $res->created_at, $timezone ) ), current_time('timestamp') ) . ' ago',
 					'post_message' => $post_message,
 					'post_image'   => $post_image,
