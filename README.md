@@ -1,5 +1,5 @@
 # social-media-feeds.php
-Getting the feeds of your social media page ( Facebook and Twitter ).
+Fetching the feeds of your social media page ( Facebook and Twitter ).
 
 ### How to use ?
 Include first the social-media-feeds.php
