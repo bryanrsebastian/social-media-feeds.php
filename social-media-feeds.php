@@ -9,9 +9,10 @@ require_once( 'twitter/TwitterAPIExchange.php' ); //authenticate twitter
  *
  * @param array $facebook credentials of your facebook app and page
  * @param array $twitter credentials of your twitter app
+ * @param array $timezone to configure the timezone because the defaul timezone is UTC only
  * @return array data of the feeds
  */
-function social_media_feeds( $facebook = array(), $twitter = array(), $instagram = array() ) {
+function social_media_feeds( $facebook = array(), $twitter = array(), $timezone = 'Asia/Manila' ) {
 	$array_feeds = array();
 
     /**
@@ -57,7 +58,7 @@ function social_media_feeds( $facebook = array(), $twitter = array(), $instagram
 					'page_name'    => $posts_name['name'],
 					'page_dp'      => $posts_img['data']['url'],
 					'post_id'      => 'http : //www.facebook.com/'.$fb_post->id,
-					'post_publish' => 'Posted '. human_time_diff( strtotime( $fb_post->created_time ), current_time('timestamp') ) . ' ago',
+					'post_publish' => 'Posted '. human_time_diff( strtotime( get_the_formatted_time( $fb_post->created_time, $timezone ) ), current_time('timestamp') ) . ' ago',
 					'post_message' => $fb_post_msg,
 					'post_image'   => $fb_post_image,
 				);
@@ -120,7 +121,7 @@ function social_media_feeds( $facebook = array(), $twitter = array(), $instagram
 					'page_name'    => $res->user->name,
 					'page_dp'      => $res->user->profile_image_url_https,
 					'post_id'      => 'https: //twitter.com/'.$res->user->screen_name.'/status/'.$res->id_str,
-					'post_publish' => 'Posted '. human_time_diff( strtotime( $res->created_at ), current_time('timestamp') ) . ' ago',
+					'post_publish' => 'Posted '. human_time_diff( strtotime( get_the_formatted_time( $res->created_at, $timezone ) ), current_time('timestamp') ) . ' ago',
 					'post_message' => $post_message,
 					'post_image'   => $post_image,
 				);
@@ -132,4 +133,15 @@ function social_media_feeds( $facebook = array(), $twitter = array(), $instagram
     krsort( $array_feeds ); // sort social media feeds from recent post
     
 	return $array_feeds;
+}
+
+/**
+ * Format the time and set the timezone
+ */
+function get_the_formatted_time( $time, $timezone ) {
+	$UTC = new DateTimeZone( 'UTC' );
+	$newTZ = new DateTimeZone( $timezone );
+	$date = new DateTime( $time, $UTC );
+	$date->setTimezone( $newTZ );
+	return $date->format( 'Y-m-d H:i:s' );
 }
